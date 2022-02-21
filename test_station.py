@@ -25,3 +25,16 @@ def test_create_monitoring_station():
     assert s.typical_range == trange
     assert s.river == river
     assert s.town == town
+
+
+def test_inconsistent_typical_range_stations():
+    
+    stations = build_station_list()
+    num_inconsistent_flowers = 0
+    for station in stations:
+        if station.typical_range_consistent() == False:
+            num_inconsistent_flowers += 1
+    
+    
+    inconsistent_flowers = inconsistent_typical_range_stations(stations)
+    assert len(inconsistent_flowers) == num_inconsistent_flowers

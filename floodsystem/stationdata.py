@@ -87,3 +87,8 @@ def update_water_levels(stations):
         if station.measure_id in measure_id_to_value:
             if isinstance(measure_id_to_value[station.measure_id], float):
                 station.latest_level = measure_id_to_value[station.measure_id]
+#def relative_water_level(self):
+#function that takes the latest water level reading and gives it a fraction of the typical range
+#(between 0 and 1 for low and high rate respectively)
+#take the value between the two as (latest water level-low rate)/(high rate-low rate)
+#                                      variable        constant   constant   constant
