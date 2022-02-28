@@ -4,7 +4,6 @@ from floodsystem.flood import stations_highest_rel_level
 from floodsystem.plot import plot_water_levels
 import datetime
 
-
 def run():
     stations = build_station_list()
     update_water_levels(stations)
@@ -12,14 +11,9 @@ def run():
 
     stations_at_risk = stations_highest_rel_level(stations, 5)
 
-    dates = []
-    levels = []
-
     for station in stations_at_risk:
         results = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))
-        dates.append(results[0])
-        levels.append(results[1])
-    plot_water_levels(stations_at_risk, dates, levels)
+        plot_water_levels(station, results[0], results[1])
 
 if __name__== "__main__":
     print("*** Task 2E: CUED Part IA Flood Warning System***")

@@ -6,19 +6,16 @@ from datetime import datetime, timedelta
 from floodsystem.analysis import polyfit
 
 def plot_water_levels(station, dates, levels):
-    stations = station 
-    length = len(stations)
-    for i in range(length):
-        plt.plot(dates[i],levels[i])
-        plt.subplot(int(length / 3) + 1, (int(length / 2) > 0) + int(length / 5) + 1, i + 1)
-        plt.xlabel('date')
-        plt.ylabel('water level (m)')
-        plt.xticks(rotation=45);
-        plt.title(stations[i].name)
-        plt.plot(dates[i], [stations[i].typical_range[0]] * len(dates[i]), 'g--')
-        plt.plot(dates[i], [stations[i].typical_range[1]] * len(dates[i]), 'g--')
-        plt.tight_layout()  # This makes sure plot does not cut off date labels
+    plt.plot(dates,levels)
+    plt.xlabel('date')
+    plt.ylabel('water level (m)')
+    plt.xticks(rotation=45)
+    plt.title(station.name)
+    plt.plot(dates, [station.typical_range[0]] * len(dates), 'g--')
+    plt.plot(dates, [station.typical_range[1]] * len(dates), 'g--')
     plt.show()
+
+
 
 def plot_water_level_with_fit(station, dates, levels, p, show_typical_range = True):
     """Plot water levels for a station with polyfit.
