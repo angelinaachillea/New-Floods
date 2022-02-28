@@ -15,8 +15,8 @@ def run():
     dates = []
     levels = []
 
-    for stations in stations_at_risk:
-        results = fetch_measure_levels(stations.measure_id, dt=datetime.timedelta(days=dt))
+    for station in stations_at_risk:
+        results = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))
         dates.append(results[0])
         levels.append(results[1])
     plot_water_levels(stations_at_risk, dates, levels)
