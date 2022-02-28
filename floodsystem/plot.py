@@ -4,8 +4,8 @@ from floodsystem.stationdata import build_station_list
 from datetime import datetime, timedelta
 from floodsystem.analysis import polyfit
 
-def plot_water_levels(stations, dates, levels):
-    stations = stations 
+def plot_water_levels(station, dates, levels):
+    stations = station 
     length = len(stations)
     for i in range(length):
         plt.plot(dates[i],levels[i])
