@@ -10,6 +10,7 @@ def plot_water_levels(station, dates, levels):
     length = len(stations)
     for i in range(length):
         plt.plot(dates[i],levels[i])
+        plt.subplot(int(length / 3) + 1, (int(length / 2) > 0) + int(length / 5) + 1, i + 1)
         plt.xlabel('date')
         plt.ylabel('water level (m)')
         plt.xticks(rotation=45);
