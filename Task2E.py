@@ -20,3 +20,7 @@ def run():
         dates.append(results[0])
         levels.append(results[1])
     plot_water_levels(stations_at_risk, dates, levels)
+
+if __name__== "__main__":
+    print("*** Task 2E: CUED Part IA Flood Warning System***")
+    run()

@@ -18,4 +18,4 @@ for stations in highest_current_stations:
     results = fetch_measure_levels(stations.measure_id, dt=datetime.timedelta(days=dt))
     dates.append(results[0])
     levels.append(results[1])
-print(plot_water_level_with_fit(highest_current_stations,dates,levels,p))
+plot_water_level_with_fit(highest_current_stations,dates,levels,p)
