@@ -1,5 +1,5 @@
 from secrets import token_urlsafe
-from .utils import sorted_by_key, gt_with_none 
+from floodsystem.utils import sorted_by_key, gt_with_none 
 
 
 def stations_level_over_threshold(stations, tol):
@@ -18,8 +18,8 @@ def stations_highest_rel_level(stations, N):
 def stations_highest_rel_level(stations, N):
     #for i in range(N):
         #return stations_level_over_threshold(stations,-9999.9)[i]
-
-    for x in stations_level_over_threshold(stations, -9999.9)[0:N]:
-        return [x[0]]
+    return [x[0] for x in stations_level_over_threshold(stations, -9999.9)[0:N]]
+    #for x in stations_level_over_threshold(stations, -9999.9)[0:N]:
+        #return [x[0]]
 
 
