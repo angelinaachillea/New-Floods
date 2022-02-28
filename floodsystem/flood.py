@@ -16,7 +16,10 @@ def stations_highest_rel_level(stations, N):
     return At_risk_stations
 '''
 def stations_highest_rel_level(stations, N):
-    for x in stations_level_over_threshold(stations,-9999.9):
-        return x[0:N]
+    #for i in range(N):
+        #return stations_level_over_threshold(stations,-9999.9)[i]
+
+    for x in stations_level_over_threshold(stations, -9999.9)[0:N]:
+        return [x[0]]
 
 

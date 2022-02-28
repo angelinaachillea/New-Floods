@@ -13,7 +13,7 @@ def plot_water_levels(stations, dates, levels):
         plt.ylabel('water level (m)')
         plt.xticks(rotation=45);
         plt.title(stations[i].name)
-        plt.tight_layout()plt.plot(dates[i], [stations[i].typical_range[0]] * len(dates[i]), 'g--')
+        plt.plot(dates[i], [stations[i].typical_range[0]] * len(dates[i]), 'g--')
         plt.plot(dates[i], [stations[i].typical_range[1]] * len(dates[i]), 'g--')
         plt.tight_layout()  # This makes sure plot does not cut off date labels
     plt.show()
