@@ -19,4 +19,4 @@ def run():
         results = fetch_measure_levels(stations.measure_id, dt=datetime.timedelta(days=dt))
         dates.append(results[0])
         levels.append(results[1])
- plot_water_levels(stations_at_risk, dates, levels)
+    plot_water_levels(stations_at_risk, dates, levels)
