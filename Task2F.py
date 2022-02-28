@@ -11,11 +11,6 @@ p=4
 
 highest_current_stations= stations_highest_rel_level(stations, 5)
 
-dates = []
-levels = []
-
 for station in highest_current_stations:
     results = fetch_measure_levels(station.measure_id, dt=datetime.timedelta(days=dt))
-    dates.append(results[0])
-    levels.append(results[1])
-    plot_water_level_with_fit(station,dates,levels,p)
+    plot_water_level_with_fit(station,results[0],results[1],p)
