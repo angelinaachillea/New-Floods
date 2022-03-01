@@ -66,9 +66,9 @@ def run():
     for station_tuple in stations_risk_level:
         if station_tuple[1] < 1:
             low_risk.append(station_tuple[0])
-        elif station_tuple[1] < 4:
+        elif station_tuple[1] < 3:
             moderate_risk.append(station_tuple[0])
-        elif station_tuple[1] < 6:
+        elif station_tuple[1] < 5:
             high_risk.append(station_tuple[0])
         else:
             severe_risk.append(station_tuple[0])
@@ -95,6 +95,11 @@ def run():
                         if town not in moderate_risk_towns:
                             if town not in low_risk_towns:
                                 low_risk_towns.append(station.town)
+    
+    print("towns at low risk-----------------------------")
+    for town in low_risk_towns:
+        if town is not None:
+            print(town)
     print("towns at severe risk----------------------------")
     for town in severe_risk_towns:
         if town is not None:
@@ -105,10 +110,6 @@ def run():
             print(town)
     print("towns at moderate risk-------------------------")
     for town in moderate_risk_towns:    
-        if town is not None:
-            print(town)
-    print("towns at low risk-----------------------------")
-    for town in low_risk_towns:
         if town is not None:
             print(town)
 if __name__=="__main__":
