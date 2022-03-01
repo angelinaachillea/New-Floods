@@ -72,28 +72,45 @@ def run():
             high_risk.append(station_tuple[0])
         else:
             severe_risk.append(station_tuple[0])
-    # now with list of stations 
+    # now with list of stations
+    towns=list(set([station_tuple[0].town for station_tuple in stations]))
     severe_risk_towns=[]
     high_risk_towns=[]
     moderate_risk_towns=[]
     low_risk_towns=[]
-    for station_tuple in stations_risk_level:
-        if station in severe_risk:
-            severe_risk_towns.append(station.town)
-        elif station in high_risk:
-            high_risk_towns.append(station.town)
-        elif station in moderate_risk:
-            moderate_risk_towns.append(station.town)
-        else:
-            low_risk_towns.append(station.town)
-    print("towns at severe risk")
-    print(severe_risk_towns)
-    print("towns at high risk")
-    print(high_risk_towns)
-    print("towns at moderate risk")
-    print(moderate_risk_towns)
-    print("towns at low risk")
-    print(low_risk_towns)
-if __name__=="main":
+    for town in towns:
+        for station in severe_risk:
+            if station.town == town and town not in severe_risk_towns: 
+                severe_risk_towns.append(town)
+        for station in high_risk:
+            if station.town == town and town not in severe_risk_towns and town not in high_risk_towns:
+                high_risk_towns.append(station.town)
+        for station in moderate_risk:
+            if station.town == town and town not in high_risk_towns and town not in moderate_risk_towns and town not in severe_risk_towns:
+                moderate_risk_towns.append(station.town)
+        for station in low_risk:
+            if station.town == town:
+                if town not in severe_risk_towns:
+                    if town not in high_risk_towns:
+                        if town not in moderate_risk_towns:
+                            if town not in low_risk_towns:
+                                low_risk_towns.append(station.town)
+    print("towns at severe risk----------------------------")
+    for town in severe_risk_towns:
+        if town is not None:
+            print(town)
+    print("towns at high risk-----------------------------")
+    for town in high_risk_towns:
+        if town is not None:    
+            print(town)
+    print("towns at moderate risk-------------------------")
+    for town in moderate_risk_towns:    
+        if town is not None:
+            print(town)
+    print("towns at low risk-----------------------------")
+    for town in low_risk_towns:
+        if town is not None:
+            print(town)
+if __name__=="__main__":
     print("***Task 2G: CUED IA Flood Warning Project***")
     run()
