@@ -1,5 +1,3 @@
-
-
 from floodsystem.datafetcher import fetch_measure_levels
 from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.flood import stations_level_over_threshold
@@ -67,7 +65,7 @@ def run():
             high_risk.append(station_tuple[0])
         else:
             severe_risk.append(station_tuple[0])
-    # now with list of stations
+    # now taking from stations to towns
     towns=list(set([station_tuple[0].town for station_tuple in stations]))
     severe_risk_towns=[]
     high_risk_towns=[]
@@ -75,14 +73,20 @@ def run():
     low_risk_towns=[]
     for town in towns:
         for station in severe_risk:
-            if station.town == town and town not in severe_risk_towns: 
-                severe_risk_towns.append(town)
+            if station.town == town:
+                if town not in severe_risk_towns: 
+                    severe_risk_towns.append(town)
         for station in high_risk:
-            if station.town == town and town not in severe_risk_towns and town not in high_risk_towns:
-                high_risk_towns.append(station.town)
+            if station.town == town:
+                if town not in severe_risk_towns:
+                    if town not in high_risk_towns:
+                        high_risk_towns.append(station.town)
         for station in moderate_risk:
-            if station.town == town and town not in high_risk_towns and town not in moderate_risk_towns and town not in severe_risk_towns:
-                moderate_risk_towns.append(station.town)
+            if station.town == town:
+                if town not in high_risk_towns:
+                    if town not in moderate_risk_towns:
+                        if town not in severe_risk_towns:
+                            moderate_risk_towns.append(station.town)
         for station in low_risk:
             if station.town == town:
                 if town not in severe_risk_towns:
