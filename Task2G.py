@@ -113,5 +113,5 @@ def run():
             print(town)
             
 if __name__=="__main__":
-    print("***Task 2G: CUED IA Flood Warning Project***")
+    print("*** Task 2G: CUED IA Flood Warning Project ***")
     run()
